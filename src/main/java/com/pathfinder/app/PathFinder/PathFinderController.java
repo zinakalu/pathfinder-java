@@ -1,6 +1,8 @@
 package com.pathfinder.app.PathFinder;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,9 +16,9 @@ public class PathFinderController {
     }
 
 
-    @GetMapping(path="/a_star")
-    public String a_star(){
-        return httpRequestService.makeRequest("a_star");
+    @PostMapping(path="/a_star")
+    public String a_star(@RequestBody String body){
+        return httpRequestService.makeRequest("a_star", body);
     }
 
     @GetMapping(path="/dijkstra")

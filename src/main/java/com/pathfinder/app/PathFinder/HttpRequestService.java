@@ -19,5 +19,20 @@ public class HttpRequestService {
             return null;
         }
     }
+
+    public String makeRequest(String endpoint, String body){
+        HttpResponse<String> response = 
+        Unirest
+        .post("http://localhost:5000/" + endpoint)
+        .body(body)
+        .asString();
+
+        if (response.getStatus() == 200){
+            return response.getBody();
+        } else{
+            System.out.println("Error: " + response.getStatus());
+            return null;
+        }
+    }
     
 }
